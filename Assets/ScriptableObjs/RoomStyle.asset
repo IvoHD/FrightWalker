@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba9eb54944ddea42acc7e6ecdb93e3b, type: 3}
+  m_Name: RoomStyle
+  m_EditorClassIdentifier: 
+  <Floors>k__BackingField:
+  - <Obj>k__BackingField: {fileID: 0}
+    <SpawnRate>k__BackingField: 50
+  - <Obj>k__BackingField: {fileID: 0}
+    <SpawnRate>k__BackingField: 50
+  <Workplaces>k__BackingField: []
+  <Furnitures>k__BackingField: []
+  <GroundInsanitySorces>k__BackingField: []
+  <Walls>k__BackingField: []
+  <Door>k__BackingField:
+    <Obj>k__BackingField: {fileID: 0}
+    <SpawnRate>k__BackingField: 0
+  <Ceilings>k__BackingField: []
+  <CeilingsLights>k__BackingField: []
+  <SanityScoreMax>k__BackingField: 0
+  <SanityScoreMin>k__BackingField: 0
+  <DangerLevel>k__BackingField: 5
+  <Size>k__BackingField: 0
