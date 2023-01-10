@@ -17,8 +17,16 @@ MonoBehaviour:
     <SpawnRate>k__BackingField: 50
   - <Obj>k__BackingField: {fileID: 0}
     <SpawnRate>k__BackingField: 50
-  <Workplaces>k__BackingField: []
-  <Furnitures>k__BackingField: []
+  <Workplaces>k__BackingField:
+  - <Obj>k__BackingField: {fileID: 0}
+    <SpawnRate>k__BackingField: 30
+  - <Obj>k__BackingField: {fileID: 0}
+    <SpawnRate>k__BackingField: 70
+  <Furnitures>k__BackingField:
+  - <Obj>k__BackingField: {fileID: 0}
+    <SpawnRate>k__BackingField: 50
+  - <Obj>k__BackingField: {fileID: 0}
+    <SpawnRate>k__BackingField: 50
   <GroundInsanitySorces>k__BackingField: []
   <Walls>k__BackingField: []
   <Door>k__BackingField:
