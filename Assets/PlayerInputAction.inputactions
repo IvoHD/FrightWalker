@@ -30,7 +30,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Interact",
@@ -305,7 +305,7 @@
                     "name": "",
                     "id": "cbabcf35-e3e6-4fd9-9363-16d98d0a1e37",
                     "path": "<Gamepad>/leftStickPress",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Sprint",

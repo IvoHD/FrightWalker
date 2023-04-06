@@ -1,28 +1,46 @@
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour
 {
 	CharacterController CharacterController { get; set; }
+
 	float MovementSpeed { get; set; } = DefaultMovementSpeed;
-	const float DefaultMovementSpeed = 5;
 	float JumpHeight { get; set; } = DefaultJumpHeight;
+	const float DefaultMovementSpeed = 5;
 	const float DefaultJumpHeight = 5;
-	Vector3 ToMove { get; set; } = Vector3.zero;
 
 	public float Stamina { get; private set; } = 100;
-	const int MaxStamina = 100;
 	public bool IsExhausted { get; private set; } = false;
+	const int MaxStamina = 100;
 
-	bool IsSprinting { get; set; }
+	public bool IsSprinting { get; private set; }
 	float SprintingSpeedFactor { get; set; } = 1.7f;
 	int SprintingStaminaDecay { get; set; } = 33;
 	int StaminaRegain { get; set; } = 60;
 	bool CanRegainStamina { get; set; }
 
-	public float YVelocity { get; set; }
+	float YVelocity { get; set; }
 	const float Gravity = -10;
+
+	Vector2 ToMove { get; set; } = Vector2.zero;
+	public bool IsMoving { get { return ToMove != Vector2.zero; } }
+
+	[field: SerializeField]
+	AudioClip JumpingSound { get; set; }
+
+	[field: SerializeField]
+	AudioClip LandingSoundSoft { get; set; }
+	[field: SerializeField]
+	AudioClip LandingSoundMedium { get; set; }
+	[field: SerializeField]
+	AudioClip LandingSoundHard { get; set; }
+
+	public bool IsAirborne { get; private set; }
 
 	void Start()
 	{
@@ -38,15 +56,13 @@ public class PlayerMovement : MonoBehaviour
 	void Move()
 	{
 		Vector3 move = MovementSpeed * (transform.right * ToMove.x + transform.up * YVelocity + transform.forward * ToMove.y);
-		
+
 		if (Stamina < 0)
-		{
 			StartCoroutine(CExhaustForSeconds(5));
-		}
 		else if (IsSprinting && !IsExhausted)
 		{ 
 			move *= SprintingSpeedFactor;
-			if (move != Vector3.zero)
+			if (IsMoving)
 				Stamina -= SprintingStaminaDecay * Time.deltaTime;
 		}
 		else if(!IsExhausted && CanRegainStamina)
@@ -64,7 +80,10 @@ public class PlayerMovement : MonoBehaviour
 	public void OnJump()
 	{
 		if (CharacterController.isGrounded)
+		{
 			YVelocity += JumpHeight;
+			AudioManager.Instance.PlaySound(JumpingSound);
+		}
 	}
 
 	public void OnSprint()
@@ -80,9 +99,25 @@ public class PlayerMovement : MonoBehaviour
 	void ApplyGravity()
 	{
 		if (!CharacterController.isGrounded)
+		{
+			IsAirborne = true;
 			YVelocity += Gravity * Time.deltaTime;
+		}
 		else
+		{
+			if (IsAirborne)
+			{
+				AudioClip AudioClipToPlay = YVelocity switch
+				{
+					> -5 => LandingSoundSoft,
+					> -12 => LandingSoundMedium,
+					< 0 => LandingSoundHard,
+				};
+				AudioManager.Instance.PlaySound(AudioClipToPlay);
+				IsAirborne = false;
+			}
 			YVelocity = Mathf.Clamp(YVelocity, -1, float.PositiveInfinity);
+		}
 	}
 
 	/// <summary>

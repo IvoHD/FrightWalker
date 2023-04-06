@@ -6,14 +6,8 @@ public class PlayerHandController : MonoBehaviour
     [field: SerializeField]
     GameObject Hand { get; set; }
 
-	public static PlayerHandController Instance { get; private set; }
-	void Awake()
-	{
-		if (Instance is not null)
-			Destroy(this);
-		else
-			Instance = this;
-	}
+	[field: SerializeField]
+	AudioClip[] PickupAndDropClips { get; set; } = new AudioClip[3]; 
 
 	/// <summary>
 	/// Adds item to player hand. Returns true if item was added successful.
@@ -25,6 +19,7 @@ public class PlayerHandController : MonoBehaviour
         if (ItemInHand is null && item.GetComponent<IItem>() is not null)
         {
             ItemInHand = item;
+			AudioManager.Instance.PlaySound(PickupAndDropClips[Random.Range(0, 3)]);
             SetItemInHand();
         }
     }
@@ -42,6 +37,7 @@ public class PlayerHandController : MonoBehaviour
         if (ItemInHand is not null)
         {
 			ItemInHand.GetComponent<IItem>().Use();
+			AudioManager.Instance.PlaySound(ItemInHand.GetComponent<IItem>().UseClip);
 			ItemInHand = null;
 		}
     }
@@ -55,6 +51,8 @@ public class PlayerHandController : MonoBehaviour
 			ItemInHand.transform.position = new(position.x, position.y + ItemInHand.transform.lossyScale.y / 2, position.z);
 			ItemInHand.transform.localRotation = Quaternion.identity;
 			ItemInHand = null;
+
+			AudioManager.Instance.PlaySound(PickupAndDropClips[Random.Range(0, 3)]);
 		}
 	}
 }
