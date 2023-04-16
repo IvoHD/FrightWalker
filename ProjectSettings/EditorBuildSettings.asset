@@ -4,6 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/UI Main Menu.unity
+    guid: ac026445f448a8e46b2232c171e99157
+  - enabled: 1
+    path: Assets/Scenes/Shions Room.unity
+    guid: 75a12c1ad7db9d44188c84f5446426f5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: da2fa8d967da446448316a96be8e653c, type: 2}
