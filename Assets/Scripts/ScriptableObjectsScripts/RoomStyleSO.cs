@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "RoomStyle", menuName = "ScriptableObjs/RoomStyle")]
+[CreateAssetMenu(fileName = "RoomStyle", menuName = "ScriptableObjects/RoomStyle")]
 public class RoomStyleSO : ScriptableObject
 {
 	//Room Properties

@@ -32,10 +32,10 @@ public class PlayerInteraction : MonoBehaviour
 		if(!CanInteract)
 			return;
 
-		if (Physics.Raycast(new(CameraTransform.position, CameraTransform.forward), out RaycastHit hit, 5f, LayerMask.GetMask("Collision")))
+		if (Physics.Raycast(new(CameraTransform.position, CameraTransform.forward), out RaycastHit hit, 5f))
 		{
 			IInteractable interactable = hit.transform.gameObject.GetComponent<IInteractable>();
-			if (interactable is not null)
+			if (interactable is not null && ((MonoBehaviour)interactable).enabled)
 				interactable.Interact();
 		}
 	}
@@ -44,7 +44,7 @@ public class PlayerInteraction : MonoBehaviour
 	{
 		if (!CanInteract)
 			return;
-		if (CameraTransform.localRotation.eulerAngles.x < 90 && CameraTransform.localRotation.eulerAngles.x > 20 && Physics.Raycast(new(CameraTransform.position, CameraTransform.forward), out RaycastHit hit, 5f, LayerMask.GetMask("Collision")))
+		if (CameraTransform.localRotation.eulerAngles.x < 90 && CameraTransform.localRotation.eulerAngles.x > 20 && Physics.Raycast(new(CameraTransform.position, CameraTransform.forward), out RaycastHit hit, 5f))
 			PlayerHandController.RemoveAndPositionAt(hit.point);
 	}
 }
