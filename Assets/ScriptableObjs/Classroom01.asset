@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2266507278b57944d8596b3764c0bc7c, type: 3}
+  m_Name: Classroom01
+  m_EditorClassIdentifier: 
+  GroundMaterial: {fileID: 2100000, guid: 3789ba081558c6e42ae67bc833f1b3e9, type: 2}
+  Buildingblock: {fileID: 3142431470979061555, guid: bd9c21080d71a23439ed7bdcbe246894, type: 3}
+  MainroomMaterial: {fileID: 2100000, guid: 3789ba081558c6e42ae67bc833f1b3e9, type: 2}
+  Modules: []
+  Walls: {fileID: 0}
+  Ceilings: {fileID: 0}
+  RoomSize: 7
+  Parts: 1
