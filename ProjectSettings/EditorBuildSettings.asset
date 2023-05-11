@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World Design Shion's Neighborhood.unity
     guid: adbeb927967d31b4ea1b3262ce924592
+  - enabled: 1
+    path: Assets/Scenes/Roombuilder.unity
+    guid: 7e9569eafd642a94281e722ab601f535
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: da2fa8d967da446448316a96be8e653c, type: 2}

@@ -4,30 +4,34 @@ using UnityEngine;
 
 public class CeilingManager : MonoBehaviour
 {
-    RoomManager RM { get; set; }
-    RoomStyle RS { get; set; }
-    public void Initiate(RoomManager rM, RoomStyle rS)
+    RoomStyle RoomStyle { get; set; }
+    
+    public void Initiate(RoomStyle roomStyle)
     {
-        RM = rM;
-        RS = rS;
+        RoomStyle = roomStyle;
         SpawnCeilings(GameObject.FindGameObjectsWithTag("GroundObjects"));
-        Debug.Log("We need to build..");
-
     }
+
+    /// <summary>
+    /// Spawns ceilings
+    /// </summary>
+    /// <param name="ceilingSpaces"></param>
     void SpawnCeilings(GameObject[] ceilingSpaces)
     {
         foreach(GameObject space in ceilingSpaces)
-        {
-            InstantiateObjectAt(space.transform.position.x, space.transform.position.y+1, space.transform.position.z, RS.Ceilings.Ceilings[MathsRand.Instance.RandNumOutOfRange(0, RS.Ceilings.Ceilings.Count - 1)]);
-        }
+            InstantiateObjectAt(space.transform.position.x, space.transform.position.y + 1.5f, space.transform.position.z, RoomStyle.Ceilings.Ceilings[MathsRand.Instance.RandNumOutOfRange(0, RoomStyle.Ceilings.Ceilings.Count - 1)]);
     }
+
+    /// <summary>
+    /// Instantiate object at position
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="z"></param>
+    /// <param name="prefab"></param>
+    /// <returns></returns>
     GameObject InstantiateObjectAt(float x, float y, float z, GameObject prefab)
     {
-        List<GameObject> spawnableObjects = new List<GameObject>();
-
-        GameObject newObject = Instantiate(prefab, new(x, y, z), Quaternion.identity);
-
-
-        return newObject;
+		return Instantiate(prefab, new(x, y, z), Quaternion.identity); ;
     }
 }

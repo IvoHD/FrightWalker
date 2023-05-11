@@ -11,12 +11,13 @@ public class ModuleDeployer : MonoBehaviour
     public GameObject[,] MainArea { get; set; }
     public List<GameObject[,]> ExtraParts { get; set; }
     public RoomStyle RoomStyle { get; set; }
-    public RoomManager RM { get; set; }
+    public RoomManager RoomManager { get; set; }
 
-
+    /// <summary>
+    /// Deploys all modules
+    /// </summary>
     public void DeployModules()
     {
-        Debug.Log(RoomStyle);
         foreach (IModule module in RoomStyle.Modules)
         {
             module.Setup(this);
@@ -64,7 +65,7 @@ public class ModuleHelper
     public GameObject[] ModuleSpace(string tag)
     {
         GameObject[] moduleSpace = GameObject.FindGameObjectsWithTag(tag);
-       foreach(GameObject gameObject in moduleSpace)
+        foreach(GameObject gameObject in moduleSpace)
         {
             gameObject.transform.tag = "GroundObjects";
         }
@@ -81,20 +82,19 @@ public class ModuleHelper
                     nodes.Add(childNode);
         return nodes;
     }
-    public bool IsBorderGroundObject(RoomManager rm, GameObject parrent)
+    public bool IsBorderGroundObject(RoomManager roomManager, GameObject parrent)
     {
         foreach (Transform node in ModuleHelper.Instance.GetNodes(parrent))
-            if (!rm.IsPlaced(node))
+            if (!roomManager.IsPlaced(node))
                 return true;
         return false;
 
     }
-    public Transform FirstWallDirerctionNode(RoomManager rm, GameObject parrent)
+    public Transform FirstWallDirerctionNode(RoomManager roomManager, GameObject parrent)
     {
         foreach (Transform node in ModuleHelper.Instance.GetNodes(parrent))
-            if (!rm.IsPlaced(node))
+            if (!roomManager.IsPlaced(node))
                 return node;
-        Debug.LogError("SOMETHING WENT WRONG");
         return null;
 
     }
@@ -146,7 +146,7 @@ public class ModuleSpawner
                 GameObject models;
 
 
-                if (ModuleHelper.Instance.IsBorderGroundObject(mD.RM, square))
+                if (ModuleHelper.Instance.IsBorderGroundObject(mD.RoomManager, square))
                 {
                     models = wall[MathsRand.Instance.RandNumOutOfRange(0, wall.Count - 1)].gameObject;
                     models.tag = "Model";
@@ -196,7 +196,7 @@ public class ModuleSpawner
     }
     void WallAdjust(GameObject model, GameObject square, ModuleDeployer mD)
     {
-        Vector3 node = ModuleHelper.Instance.FirstWallDirerctionNode(mD.RM, square).position;
+        Vector3 node = ModuleHelper.Instance.FirstWallDirerctionNode(mD.RoomManager, square).position;
 
 
 

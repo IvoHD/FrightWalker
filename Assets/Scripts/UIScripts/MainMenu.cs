@@ -1,9 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    PlayerMouseLook PlayerMouseLook { get; set; }
+
     [field: SerializeField]
     TextMeshProUGUI MouseSensitivityText { get; set; }
     public float MouseSensitivityValue
@@ -13,8 +16,11 @@ public class MainMenu : MonoBehaviour
         set
         {
             if (value >= 1 && value <= 5)
-                MouseSensitivityText.text = value.ToString("F2");
-        }
+            {
+				MouseSensitivityText.text = value.ToString("F2");
+                PlayerMouseLook.MouseSensitivity = value;
+			}
+		}
     }
 
     [field: SerializeField]
@@ -26,7 +32,10 @@ public class MainMenu : MonoBehaviour
         set
         {
             if (value >= 40 && value <= 90)
-                FOVText.text = value.ToString();
+            {
+                FOVText.text = value.ToString("F2");
+                PlayerMouseLook.FOV = value;
+            }
 
         }
     }
@@ -38,14 +47,21 @@ public class MainMenu : MonoBehaviour
     [field: SerializeField]
     TextMeshProUGUI MasterText { get; set; }
 
-    public float SFXValue
+	[field: SerializeField]
+	AudioMixerGroup SFXMixer { get; set; }
+	[field: SerializeField]
+	AudioMixerGroup MusicMixer { get; set; }
+    [field: SerializeField]
+    AudioMixerGroup MasterMixer { get; set; }
+
+	public float SFXValue
     {
         get { return float.Parse(SFXText.text); }
         set
         {
             if (value >= 0 && value <= 100)
-                SFXText.text = value.ToString();
-        }
+				SFXText.text = value.ToString();
+		}
     }
     public float MusicValue
     {
@@ -68,7 +84,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.Instance.LoadPlayground();
     }
 
     public void ExitGame()

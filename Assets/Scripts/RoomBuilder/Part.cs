@@ -15,10 +15,10 @@ public class Part : MonoBehaviour
 
     private void PartPlanner()
     {
-        RM.roomParts.Add(RectGen(Style.RoomSize));
+        RM.RoomParts.Add(RectGen(Style.RoomSize));
         for (int i = 0; i < Style.Parts; i++)
         {
-            RM.roomParts.Add(RectGen(Style.RoomSize/2));
+            RM.RoomParts.Add(RectGen(Style.RoomSize/2));
         }
     }
 

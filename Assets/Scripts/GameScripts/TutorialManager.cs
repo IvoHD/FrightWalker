@@ -45,6 +45,9 @@ public class TutorialManager : MonoBehaviour
 
 	void Start()
     {
+		if (PlayerPrefs.GetInt("HasCompletedTutorial") == 1)
+			EndTutorial();
+
 		PlayerMovementController = GetComponent<PlayerMovementController>();
 
 		SoccerBall = GameObject.Find("SoccerBall");
@@ -63,7 +66,12 @@ public class TutorialManager : MonoBehaviour
 	/// <param name="condition">The condition to compare against the current condition.</param>
 	public void NextConditionIfCurrent(Condition condition)
 	{
-		if(CurrCondition == condition)
+		if (CurrCondition == condition && CurrCondition == Condition.HasUsedItem)
+		{
+			EndTutorial();
+			GameManager.Instance.LoadShionsRoom();
+		}
+		else if (CurrCondition == condition)
 		{
 			CurrCondition++;
 			NextKeyprompt();
@@ -75,19 +83,19 @@ public class TutorialManager : MonoBehaviour
 	/// </summary>
 	public void NextKeyprompt()
 	{
-		int nextIndex = KeyPrompts.IndexOf(CurrentKeyPrompt) + 1;
+		CurrentKeyPrompt = KeyPrompts[KeyPrompts.IndexOf(CurrentKeyPrompt) + 1];
+	}
 
-		if (nextIndex >= KeyPrompts.Count)
-		{
-			KeyPromptIcon.enabled = false;
-			KeyPromptVerb.enabled = false;
-			KeyPromptText.enabled = false;
-			Destroy(this);
-
-			return;
-		}
-
-		CurrentKeyPrompt = KeyPrompts[nextIndex];
+	/// <summary>
+	/// Ends tutorial and disables keyprompts
+	/// </summary>
+	void EndTutorial()
+	{
+		PlayerPrefs.SetInt("HasCompletedTutorial", 1);
+		Destroy(KeyPromptText);
+		Destroy(KeyPromptVerb);
+		Destroy(KeyPromptIcon);
+		Destroy(this);
 	}
 
 	public void OnMove()

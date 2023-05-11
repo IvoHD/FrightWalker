@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 	AudioSource GeneralAudioSource { get; set; }
 	[field: SerializeField]
 	AudioSource HeavyBreathing { get; set; }
-	[field: SerializeField]
+
     PlayerMovementController PlayerMovementController { get; set; }
 
     public bool Muted { get; set; }
@@ -20,8 +20,9 @@ public class AudioManager : MonoBehaviour
 	public static AudioManager Instance { get; private set; }
 	void Awake()
 	{
+        DontDestroyOnLoad(gameObject);
 		if (Instance is not null)
-			Destroy(this);
+			Destroy(gameObject);
 		else
 			Instance = this;
 	}

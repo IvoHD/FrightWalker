@@ -7,4 +7,6 @@ public class Wall : ScriptableObject
 {
     public List<GameObject> Walls;
     public List<GameObject> Windows;
+    public GameObject Entrance;
+    public GameObject Exit;
 }
