@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a831a1faf744843862b57f424dca03, type: 3}
+  m_Name: TeacherTable
+  m_EditorClassIdentifier: 
+  moduleMaterial: {fileID: 2100000, guid: 083562daaeb2a4544b4d95945bd74e52, type: 2}
+  models:
+  - BackModel:
+      gameObject: {fileID: 696810426920713182, guid: ed7b79f78149870458cedcb2a299edf6, type: 3}
+      spawn: 2
+    FrontModel:
+      gameObject: {fileID: 3950109047799731583, guid: c9024b10e57287f44ad39b01fd55314c, type: 3}
+      spawn: 3
+    AlignStatus: 2

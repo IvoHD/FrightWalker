@@ -189,9 +189,9 @@ public class ModuleSpawner
         float alingrepositionRot = MathsRand.Instance.RandNumOutOfRange(0, aling)*10;
         if (MathsRand.Instance.Chance(2))
             alingrepositionRot *= -1;
-        frontModel.transform.position += new Vector3(alingrepositionPos, 0, (float)0.25);
+        frontModel.transform.position += new Vector3((float)0.25, 0, alingrepositionPos);
       
-        backModel.transform.position += new Vector3(alingrepositionPos, 0, (float)-0.25);
+        backModel.transform.position += new Vector3((float)-0.25, 0, alingrepositionPos);
         backModel.transform.Rotate(0, alingrepositionRot, 0);
     }
     void WallAdjust(GameObject model, GameObject square, ModuleDeployer mD)

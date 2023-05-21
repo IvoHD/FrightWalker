@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4ef9db9f19fd94096d2fbad66639dc, type: 3}
+  m_Name: Workplace
+  m_EditorClassIdentifier: 
+  moduleMaterial: {fileID: 2100000, guid: 083562daaeb2a4544b4d95945bd74e52, type: 2}
+  models:
+  - BackModel:
+      gameObject: {fileID: 3270685898640692391, guid: 321a2876ce8a73749a2c862c43827115, type: 3}
+      spawn: 2
+    FrontModel:
+      gameObject: {fileID: 2663696635111306375, guid: 815050d9663c7c64d9892b430490217d, type: 3}
+      spawn: 3
+    AlignStatus: 1
+  Items:
+  - {fileID: 4469070412812904653, guid: 024420f7987263946876abf5b9d3a751, type: 3}

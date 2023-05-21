@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff499032e37affb4ebc4845b93725abe, type: 3}
+  m_Name: FurnitureModule
+  m_EditorClassIdentifier: 
+  moduleMaterial: {fileID: 2100000, guid: 3789ba081558c6e42ae67bc833f1b3e9, type: 2}
+  models:
+  - gameObject: {fileID: 6205587737410792535, guid: ce86388c48652ac4f98e1b00605f3723, type: 3}
+    spawn: 0
+  - gameObject: {fileID: 919132149155446097, guid: 2e63304071a046c4d86adef6de936110, type: 3}
+    spawn: 0

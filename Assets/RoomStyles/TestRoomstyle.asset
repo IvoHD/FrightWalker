@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2266507278b57944d8596b3764c0bc7c, type: 3}
+  m_Name: TestRoomstyle
+  m_EditorClassIdentifier: 
+  GroundMaterial: {fileID: 2100000, guid: 3d69ad785d4d131478bb5a53c8150564, type: 2}
+  Buildingblock: {fileID: 3142431470979061555, guid: bd9c21080d71a23439ed7bdcbe246894, type: 3}
+  MainroomMaterial: {fileID: 2100000, guid: 3d69ad785d4d131478bb5a53c8150564, type: 2}
+  Modules:
+  - {fileID: 11400000, guid: 96fe265e6a884394f99ea9ea9fc7f46c, type: 2}
+  - {fileID: 11400000, guid: 4b67df96a74b2aa40870952917ba0a67, type: 2}
+  - {fileID: 11400000, guid: c095ee0dce7138b43bf30ab7a5388acd, type: 2}
+  Walls: {fileID: 11400000, guid: 4d81e7595134c3546b8d4a9378fa39d6, type: 2}
+  Ceilings: {fileID: 11400000, guid: 26a58862cb2e2d142a33f2657e873e7e, type: 2}
+  RoomSize: 9
+  Parts: 3
